@@ -1,0 +1,10 @@
+name = "token-lab"
+pages_build_output_dir = "public"
+compatibility_date = "2025-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "token-lab"
+# Після `npx wrangler d1 create token-lab` встав сюди database_id з відповіді.
+# Для локальної розробки підходить будь-яке значення.
+database_id = "00000000-0000-0000-0000-000000000000"

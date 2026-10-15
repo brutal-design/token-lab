@@ -1,0 +1,10 @@
+{
+  "name": "token-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx wrangler pages dev",
+    "test": "node --test",
+    "db:init": "npx wrangler d1 execute token-lab --local --file=schema.sql"
+  }
+}

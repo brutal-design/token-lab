@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Token Lab - токени з одного кольору</title>
+  <meta name="description" content="Введи бренд-колір і отримай шкалу 50-950, семантичні токени, перевірку контрасту WCAG і експорт у CSS, Tailwind і tokens.json.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="/" aria-label="Token Lab, на головну">
+      <span class="logo-mark" id="logo-mark"></span>
+      <span>Token Lab</span>
+    </a>
+    <nav class="topnav" aria-label="Розділи">
+      <a href="#scale">Шкала</a>
+      <a href="#tokens">Токени</a>
+      <a href="#preview">Контраст</a>
+      <a href="#export">Експорт</a>
+    </nav>
+    <button class="btn btn-primary" id="share" type="button">Поділитися</button>
+  </header>
+
+  <div class="layout">
+    <aside class="panel">
+      <p class="eyebrow">01 / Бренд-колір</p>
+      <h1>Один колір. Уся система токенів.</h1>
+      <p class="lead">Введи hex бренду - отримаєш шкалу 50-950, токени для світлої і темної теми та перевірку контрасту WCAG.</p>
+
+      <div class="field">
+        <label class="field-label" for="hex">Hex</label>
+        <div class="hex-input" id="hex-box">
+          <input type="color" id="picker" aria-label="Обрати колір" value="#4f46e5">
+          <span class="hash" aria-hidden="true">#</span>
+          <input id="hex" value="4F46E5" maxlength="7" autocomplete="off" spellcheck="false" aria-describedby="hex-error">
+        </div>
+        <p class="field-error" id="hex-error" role="alert" hidden>Потрібен hex з 3 або 6 символів, наприклад 4F46E5</p>
+      </div>
+
+      <div class="field">
+        <p class="field-label">Спробуй</p>
+        <div class="presets" id="presets">
+          <button type="button" data-hex="#4f46e5"><i style="background:#4f46e5"></i>Індиго</button>
+          <button type="button" data-hex="#facc15"><i style="background:#facc15"></i>Жовтий</button>
+          <button type="button" data-hex="#0f766e"><i style="background:#0f766e"></i>Бірюза</button>
+          <button type="button" data-hex="#e4572e"><i style="background:#e4572e"></i>Теракота</button>
+        </div>
+      </div>
+
+      <dl class="meta" id="meta"></dl>
+    </aside>
+
+    <main>
+      <section id="scale" class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">02 / Шкала</p>
+            <h2>Тональна шкала</h2>
+          </div>
+          <p class="hint">Клік по свотчу копіює hex</p>
+        </div>
+        <div class="scale-row">
+          <p class="scale-name">Brand</p>
+          <div class="swatches" id="brand-swatches"></div>
+        </div>
+        <div class="scale-row">
+          <p class="scale-name">Neutral</p>
+          <div class="swatches" id="neutral-swatches"></div>
+        </div>
+      </section>
+
+      <section id="tokens" class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">03 / Токени</p>
+            <h2>Семантичні токени</h2>
+          </div>
+          <p class="hint">Компоненти беруть тільки їх, не примітиви</p>
+        </div>
+        <div class="table-wrap">
+          <table class="tokens">
+            <thead><tr><th scope="col">Токен</th><th scope="col">Світла</th><th scope="col">Темна</th></tr></thead>
+            <tbody id="tokens-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="preview" class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">04 / Контраст</p>
+            <h2>Перевірка на живому UI</h2>
+          </div>
+          <p class="hint">WCAG 2.2: текст 4.5:1, UI-елементи 3:1</p>
+        </div>
+        <div class="previews" id="previews"></div>
+      </section>
+
+      <section id="export" class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">05 / Експорт</p>
+            <h2>Забирай у проєкт</h2>
+          </div>
+        </div>
+        <div class="code">
+          <div class="code-bar">
+            <div class="tabs" role="tablist" id="export-tabs">
+              <button role="tab" aria-selected="true" data-format="css">CSS</button>
+            </div>
+            <button class="btn btn-ghost" id="copy-code" type="button">Копіювати</button>
+          </div>
+          <pre><code id="code"></code></pre>
+        </div>
+      </section>
+
+      <footer class="footer">Зроблено наживо на ефірі UX Hero · 15.10.2026</footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
