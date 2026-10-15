@@ -7,4 +7,4 @@ binding = "DB"
 database_name = "token-lab"
 # Після `npx wrangler d1 create token-lab` встав сюди database_id з відповіді.
 # Для локальної розробки підходить будь-яке значення.
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "e65de8e1-251e-4bd8-9046-6aece9c99b74"
